@@ -10,6 +10,12 @@
       "extra-files": [
         "SKILL.md"
       ]
+    },
+    "skills/angular-ngrx-clean-architecture": {
+      "component": "angular-ngrx-clean-architecture",
+      "extra-files": [
+        "SKILL.md"
+      ]
     }
   }
 }
