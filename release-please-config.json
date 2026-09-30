@@ -7,7 +7,9 @@
   "packages": {
     "skills/browser-extension-clean-architecture": {
       "component": "browser-extension-clean-architecture",
-      "extra-files": ["SKILL.md"]
+      "extra-files": [
+        "SKILL.md"
+      ]
     }
   }
 }

@@ -12,6 +12,7 @@
 
 ## How it was tested
 
+- [ ] `node scripts/sync-base.mjs` (when `shared/` changed)
 - [ ] `node scripts/validate-skills.mjs`
 - [ ] `npx skills add ./ --list`
 - [ ] Installed into a scratch project and tried a realistic request in: <!-- Claude Code / Cursor / Codex / OpenCode / Copilot -->
