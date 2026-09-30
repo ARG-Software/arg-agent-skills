@@ -28,6 +28,12 @@
       "extra-files": [
         "SKILL.md"
       ]
+    },
+    "skills/react-native-clean-architecture": {
+      "component": "react-native-clean-architecture",
+      "extra-files": [
+        "SKILL.md"
+      ]
     }
   }
 }
