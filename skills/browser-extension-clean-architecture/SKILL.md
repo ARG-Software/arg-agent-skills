@@ -5,7 +5,7 @@ license: MIT
 metadata:
   author: ARG Software
   homepage: https://arg.software
-  version: 0.1.0 # x-release-please-version
+  version: 1.0.0 # x-release-please-version
 ---
 
 # Browser Extension Clean Architecture
