@@ -16,6 +16,12 @@
       "extra-files": [
         "SKILL.md"
       ]
+    },
+    "skills/nestjs-mcp-server": {
+      "component": "nestjs-mcp-server",
+      "extra-files": [
+        "SKILL.md"
+      ]
     }
   }
 }
