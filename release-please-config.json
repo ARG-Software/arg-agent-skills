@@ -34,6 +34,12 @@
       "extra-files": [
         "SKILL.md"
       ]
+    },
+    "skills/web-quality-audit": {
+      "component": "web-quality-audit",
+      "extra-files": [
+        "SKILL.md"
+      ]
     }
   }
 }
