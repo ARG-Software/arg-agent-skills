@@ -45,7 +45,8 @@
       "component": "arg-code-review",
       "extra-files": [
         "SKILL.md"
-      ]
+      ],
+      "release-as": "1.1.0"
     },
     "skills/arg-mcp-server": {
       "component": "arg-mcp-server",
