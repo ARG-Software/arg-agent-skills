@@ -1,0 +1,3 @@
+# Every pull request requests a review from these owners.
+# GitHub never requests the PR author, so keep at least one other owner.
+* @dev-argsoftware
