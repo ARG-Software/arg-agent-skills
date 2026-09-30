@@ -13,6 +13,7 @@ npx skills add ARG-Software/arg-agent-skills
 | Skill | What it does | Install |
 | --- | --- | --- |
 | [browser-extension-clean-architecture](skills/browser-extension-clean-architecture/SKILL.md) | Clean architecture for Manifest V3 browser extensions (Chrome/Firefox/Safari), including extensions that run AI on the device. It covers domain/application/infrastructure/presentation layers enforced by architecture tests, a dependency-free `src/lib`, feature/fix branches, reviewed PRs, CI before merge, `.env` handling, and SemVer releases with release-please. | `npx skills add ARG-Software/arg-agent-skills --skill browser-extension-clean-architecture` |
+| [angular-ngrx-clean-architecture](skills/angular-ngrx-clean-architecture/SKILL.md) | Clean architecture for Angular apps with NgRx on standalone components and signals. It covers domain/application/infrastructure/feature layers enforced by lint, all HttpClient and browser storage kept in infrastructure, typed action groups, effects, selectors and SignalStores, pure DTO mappers, OnPush components, runtime configuration, Vitest/Jest and Playwright tests, and release-please. | `npx skills add ARG-Software/arg-agent-skills --skill angular-ngrx-clean-architecture` |
 
 More skills are on the way. Watch the repo to hear about new ones.
 
