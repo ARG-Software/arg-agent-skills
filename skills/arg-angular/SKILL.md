@@ -1,6 +1,6 @@
 ---
-name: angular-ngrx-clean-architecture
-description: Clean architecture for Angular applications with NgRx (Store, Effects, Entity, SignalStore) on standalone components and signals. Use when scaffolding or extending an Angular app, adding a feature, route, component, action, reducer, effect, selector, facade, SignalStore, API service, interceptor or guard, choosing between the global Store and a SignalStore, wiring runtime configuration, writing component, store or e2e tests, enforcing import boundaries, setting up CI, environment variables and secrets (.env), versioning with release-please, or preparing a branch and pull request. Enforces domain/application/infrastructure/feature layers with lint-checked boundaries, all HttpClient and browser storage access in infrastructure, typed action groups, pure mappers, OnPush components, a dependency-free shared lib, feature/fix branches, reviewed PRs, and CI before merge.
+name: arg-angular
+description: How ARG builds scalable Angular applications with NgRx (Store, Effects, Entity, SignalStore) on standalone components and signals. Business rules stay separate from Angular and NgRx, so features stay easy to change as the app grows, and lint enforces the boundaries. Use when scaffolding or extending an Angular app, adding a feature, route, component, action, reducer, effect, selector, facade, SignalStore, API service, interceptor or guard, choosing between the global Store and a SignalStore, wiring runtime configuration, writing component, store or e2e tests, enforcing import boundaries, setting up CI, environment variables and secrets (.env), versioning with release-please, or preparing a branch and pull request. Enforces domain/application/infrastructure/feature layers with lint-checked boundaries, all HttpClient and browser storage access in infrastructure, typed action groups, pure mappers, OnPush components, a dependency-free shared lib, feature/fix branches, reviewed PRs, and CI before merge.
 license: MIT
 metadata:
   author: ARG Software
@@ -8,9 +8,9 @@ metadata:
   version: 1.0.0 # x-release-please-version
 ---
 
-# Angular + NgRx Clean Architecture
+# Scalable Angular apps, the ARG way
 
-Guidance for Angular applications with NgRx that stay predictable as features pile up. It is distilled from ARG Software's Angular-Redux reference app, a manufacturing dashboard with feature stores, effects, containers and a shared UI kit, and modernised. The source targets Angular 19 (end of life), NgModules and Karma. This skill targets the current Angular major, standalone APIs, signals, and Vitest or Jest.
+Guidance for scalable Angular applications with NgRx that stay predictable as features pile up. It is distilled from ARG Software's Angular-Redux reference app, a manufacturing dashboard with feature stores, effects, containers and a shared UI kit, and modernised. The source targets Angular 19 (end of life), NgModules and Karma. This skill targets the current Angular major, standalone APIs, signals, and Vitest or Jest.
 
 <!-- arg-base:start -->
 ## ARG base: rules for every task

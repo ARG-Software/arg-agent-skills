@@ -1,5 +1,5 @@
 ---
-name: web-quality-audit
+name: arg-web-audit
 description: Audit a website or your own web app for security, performance, payload, efficiency, architecture, DOM, accessibility and AI readiness with evidence-based scoring. Use when asked to audit, review, score or benchmark a site or page, check security headers (CSP, HSTS, frame protection, cookies, CORS, SRI), Core Web Vitals (LCP, CLS, TBT, FCP, TTFB), caching, page weight, images, fonts, compression, third-party dependencies, request counts, accessibility basics (alt text, labels, headings, landmarks), robots.txt, sitemap, llms.txt, structured data or agent discovery files, compare two audits, or write an audit report with fixes. Uses passive, browser-observable evidence only, treats unobservable evidence as unknown instead of failing it, grades numeric checks without cliffs, names the offending items, and pairs every problem with a recommendation. When the audit leads to code changes, the ARG base applies, with feature/fix branches, reviewed PRs, and CI before merge.
 license: MIT
 metadata:
@@ -8,7 +8,7 @@ metadata:
   version: 1.0.0 # x-release-please-version
 ---
 
-# Web Quality Audit
+# Web Audit
 
 A method for auditing a web page the way [ARG Architect](https://arg.software) does: collect passive evidence the browser can observe, turn it into checks with explicit thresholds, score each category by what was actually observed, and report every problem with the evidence that proves it and the fix that resolves it. Use it to audit any public site, or your own app before a release.
 

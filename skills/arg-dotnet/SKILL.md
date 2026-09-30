@@ -1,6 +1,6 @@
 ---
-name: dotnet-clean-architecture
-description: Clean architecture for .NET / ASP.NET Core back ends with DDD and CQRS. Use when scaffolding or extending a .NET solution, adding an entity, value object, domain event, command, query, handler, validator, pipeline behaviour, repository, EF Core configuration, Dapper query, outbox, endpoint or controller, choosing a mediator library, mapping Result errors to HTTP, configuring authentication, caching, options or health checks, writing unit, architecture (NetArchTest), integration or functional tests with Testcontainers, setting up CI, Docker, environment variables and secrets (.env, user-secrets), versioning with release-please, or preparing a branch and pull request. Enforces Domain/Application/Infrastructure/Api projects with architecture tests, rich domain models returning Result, vertical-slice use cases, a transactional outbox, a dependency-free SharedKernel, feature/fix branches, reviewed PRs, and CI before merge.
+name: arg-dotnet
+description: How ARG builds scalable .NET / ASP.NET Core back ends with DDD and CQRS. Business rules live in a rich domain model, so the system stays easy to change as it grows. Use when scaffolding or extending a .NET solution, adding an entity, value object, domain event, command, query, handler, validator, pipeline behaviour, repository, EF Core configuration, Dapper query, outbox, endpoint or controller, choosing a mediator library, mapping Result errors to HTTP, configuring authentication, caching, options or health checks, writing unit, architecture (NetArchTest), integration or functional tests with Testcontainers, setting up CI, Docker, environment variables and secrets (.env, user-secrets), versioning with release-please, or preparing a branch and pull request. Enforces Domain/Application/Infrastructure/Api projects with architecture tests, rich domain models returning Result, vertical-slice use cases, a transactional outbox, a dependency-free SharedKernel, feature/fix branches, reviewed PRs, and CI before merge.
 license: MIT
 metadata:
   author: ARG Software
@@ -8,9 +8,9 @@ metadata:
   version: 1.0.0 # x-release-please-version
 ---
 
-# .NET Clean Architecture
+# Scalable .NET back ends, the ARG way
 
-Guidance for ASP.NET Core back ends that keep business rules in a rich domain model and every dependency pointing inward. It is distilled from ARG Software's Clean-Architecture reference solution ("Bookify": apartment bookings with DDD, CQRS, an outbox, Keycloak auth and Testcontainers), and modernised. The source targets .NET 8, which reaches end of support in November 2026, uses MediatR (commercially licensed from v13), and serializes the outbox with `TypeNameHandling.All`. All three are fixed here.
+Guidance for scalable ASP.NET Core back ends that keep business rules in a rich domain model and every dependency pointing inward. It is distilled from ARG Software's Clean-Architecture reference solution ("Bookify": apartment bookings with DDD, CQRS, an outbox, Keycloak auth and Testcontainers), and modernised. The source targets .NET 8, which reaches end of support in November 2026, uses MediatR (commercially licensed from v13), and serializes the outbox with `TypeNameHandling.All`. All three are fixed here.
 
 <!-- arg-base:start -->
 ## ARG base: rules for every task

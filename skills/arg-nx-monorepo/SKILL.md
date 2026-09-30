@@ -1,6 +1,6 @@
 ---
-name: nx-monorepo-clean-architecture
-description: Clean architecture for Nx + pnpm TypeScript monorepos with NestJS microservices and a Next.js front end. Use when scaffolding or extending an Nx workspace, adding an app, library, bounded context, microservice, command, query, repository, message producer or consumer, choosing Kafka or RabbitMQ, naming services, topics and queues, enforcing module boundaries with tags, setting up CI with nx affected, Docker images, environment variables and secrets (.env), versioning with release-please, or preparing a branch and pull request. Enforces domain/application/infrastructure layers as tagged Nx libraries, CQRS with Result types, one service per bounded context that owns its data, asynchronous messaging with versioned contracts, an outbox and idempotent consumers, a dependency-free utils library, feature/fix branches, reviewed PRs, and CI before merge.
+name: arg-nx-monorepo
+description: How ARG builds scalable Nx + pnpm TypeScript monorepos with NestJS microservices and a Next.js front end. Each service owns its data and business rules stay apart from frameworks, so the workspace grows without tangling. Use when scaffolding or extending an Nx workspace, adding an app, library, bounded context, microservice, command, query, repository, message producer or consumer, choosing Kafka or RabbitMQ, naming services, topics and queues, enforcing module boundaries with tags, setting up CI with nx affected, Docker images, environment variables and secrets (.env), versioning with release-please, or preparing a branch and pull request. Enforces domain/application/infrastructure layers as tagged Nx libraries, CQRS with Result types, one service per bounded context that owns its data, asynchronous messaging with versioned contracts, an outbox and idempotent consumers, a dependency-free utils library, feature/fix branches, reviewed PRs, and CI before merge.
 license: MIT
 metadata:
   author: ARG Software
@@ -8,9 +8,9 @@ metadata:
   version: 1.0.0 # x-release-please-version
 ---
 
-# Nx Monorepo Clean Architecture
+# Scalable Nx monorepos, the ARG way
 
-Guidance for Nx monorepos that hold several NestJS services and a Next.js front end, and stay clean as the number of services grows. It is distilled from ARG Software's Nx-Monorepo-Boilerplate. The weak spots found there (unenforced boundaries, application importing infrastructure, thin tests, no `nx affected`) are fixed here as rules.
+Guidance for Nx monorepos that hold several NestJS services and a Next.js front end, and scale as the number of services grows. It is distilled from ARG Software's Nx-Monorepo-Boilerplate. The weak spots found there (unenforced boundaries, application importing infrastructure, thin tests, no `nx affected`) are fixed here as rules.
 
 <!-- arg-base:start -->
 ## ARG base: rules for every task
