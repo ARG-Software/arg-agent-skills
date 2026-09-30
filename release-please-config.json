@@ -40,6 +40,12 @@
       "extra-files": [
         "SKILL.md"
       ]
+    },
+    "skills/arg-code-review": {
+      "component": "arg-code-review",
+      "extra-files": [
+        "SKILL.md"
+      ]
     }
   }
 }
