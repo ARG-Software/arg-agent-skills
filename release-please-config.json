@@ -16,6 +16,12 @@
       "extra-files": [
         "SKILL.md"
       ]
+    },
+    "skills/dotnet-clean-architecture": {
+      "component": "dotnet-clean-architecture",
+      "extra-files": [
+        "SKILL.md"
+      ]
     }
   }
 }
