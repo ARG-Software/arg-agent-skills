@@ -1,0 +1,13 @@
+{
+  "$schema": "https://raw.githubusercontent.com/googleapis/release-please/main/schemas/config.json",
+  "release-type": "simple",
+  "include-component-in-tag": true,
+  "bump-minor-pre-major": true,
+  "separate-pull-requests": true,
+  "packages": {
+    "skills/browser-extension-clean-architecture": {
+      "component": "browser-extension-clean-architecture",
+      "extra-files": ["SKILL.md"]
+    }
+  }
+}
