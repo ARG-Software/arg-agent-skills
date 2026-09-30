@@ -1,57 +1,10 @@
 {
   "$schema": "https://raw.githubusercontent.com/googleapis/release-please/main/schemas/config.json",
-  "release-type": "simple",
-  "include-component-in-tag": true,
-  "bump-minor-pre-major": true,
-  "separate-pull-requests": false,
+  "bootstrap-sha": "465e2c6a5da8dfb4f7bf60a4542a709d9ea24add",
+  "include-component-in-tag": false,
   "packages": {
-    "skills/arg-browser-extension": {
-      "component": "arg-browser-extension",
-      "extra-files": [
-        "SKILL.md"
-      ]
-    },
-    "skills/arg-angular": {
-      "component": "arg-angular",
-      "extra-files": [
-        "SKILL.md"
-      ]
-    },
-    "skills/arg-nx-monorepo": {
-      "component": "arg-nx-monorepo",
-      "extra-files": [
-        "SKILL.md"
-      ]
-    },
-    "skills/arg-dotnet": {
-      "component": "arg-dotnet",
-      "extra-files": [
-        "SKILL.md"
-      ]
-    },
-    "skills/arg-react-native": {
-      "component": "arg-react-native",
-      "extra-files": [
-        "SKILL.md"
-      ]
-    },
-    "skills/arg-web-audit": {
-      "component": "arg-web-audit",
-      "extra-files": [
-        "SKILL.md"
-      ]
-    },
-    "skills/arg-code-review": {
-      "component": "arg-code-review",
-      "extra-files": [
-        "SKILL.md"
-      ]
-    },
-    "skills/arg-mcp-server": {
-      "component": "arg-mcp-server",
-      "extra-files": [
-        "SKILL.md"
-      ]
+    ".": {
+      "release-type": "simple"
     }
   }
 }

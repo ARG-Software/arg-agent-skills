@@ -8,7 +8,7 @@
 
 ## Skill(s) affected
 
-<!-- e.g. arg-browser-extension. Keep one skill per PR so each changelog stays accurate. -->
+<!-- e.g. arg-browser-extension, or "base" for a change in shared/. -->
 
 ## How it was tested
 
@@ -19,6 +19,6 @@
 
 ## Checklist
 
-- [ ] PR title is a Conventional Commit scoped to the skill, e.g. `feat(<skill-name>): ...` or `fix(<skill-name>): ...`
-- [ ] Breaking changes are marked with `!` or a `BREAKING CHANGE:` footer
-- [ ] New skills are registered in `release-please-config.json`, `.release-please-manifest.json`, and the README Skills table
+- [ ] PR title is a Conventional Commit, scoped to the skill when it touches one, e.g. `feat(<skill-name>): ...` or `fix(<skill-name>): ...`
+- [ ] Breaking changes (such as renaming a skill) are marked with `!` or a `BREAKING CHANGE:` footer
+- [ ] New skills have a row in the README Skills table

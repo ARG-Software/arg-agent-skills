@@ -71,21 +71,15 @@ Each skill is a folder with a `SKILL.md`. Copy `skills/<skill-name>/` into your 
 
 Paths change as the agents evolve. The `npx skills` CLI always uses the current ones.
 
-## Versions and changelogs
+## Versions and changelog
 
-Each skill has its own version and changelog:
+The repo has one version for all skills, in [`version.txt`](version.txt), with one [`CHANGELOG.md`](CHANGELOG.md) and releases tagged `v<version>`. Versions follow [Semantic Versioning](https://semver.org): fixes bump the patch, new guidance bumps the minor, and changes that alter what the agent does in an incompatible way (such as renaming a skill) bump the major.
 
-- Its version is in the `metadata.version` field of its `SKILL.md`.
-- Its changelog is `skills/<skill-name>/CHANGELOG.md`.
-- Its releases are tagged `<skill-name>-v<version>`.
-
-Versions follow [Semantic Versioning](https://semver.org): fixes bump the patch, new guidance bumps the minor, and changes that alter what the agent does in an incompatible way bump the major.
-
-To update an installed skill, run the same `npx skills add` command again.
+`npx skills add` installs the skills from `main`. To update an installed skill, run the same command again.
 
 ## Contributing
 
-Issues and pull requests are welcome. Read [CONTRIBUTING.md](CONTRIBUTING.md) first; it explains how to add a new skill and how releases work.
+Issues and pull requests are welcome. Read [CONTRIBUTING.md](CONTRIBUTING.md) first; it explains how to add a new skill and how the version is set.
 
 ## About ARG Software
 

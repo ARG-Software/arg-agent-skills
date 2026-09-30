@@ -1,6 +1,6 @@
 # Contributing
 
-This repo is a catalogue of agent skills. Every skill lives in its own folder, is versioned on its own, and is installed with `npx skills add ARG-Software/arg-agent-skills --skill <skill-name>`.
+This repo is a catalogue of agent skills. Every skill lives in its own folder and is installed with `npx skills add ARG-Software/arg-agent-skills --skill <skill-name>`.
 
 ## Workflow
 
@@ -8,16 +8,14 @@ We follow the same rules our skills teach:
 
 1. Branch from `main`: `feat/<skill-name>` for a new skill or new guidance, `fix/<skill-name>-<slug>` for corrections, `docs/...` / `chore/...` / `ci/...` for the rest.
 2. Open a pull request. `main` only accepts reviewed PRs with green checks, and PRs are **squash merged**.
-3. The **PR title is a [Conventional Commit](https://www.conventionalcommits.org) whose scope is the skill name**, because release-please reads it to version that skill:
+3. The **PR title is a [Conventional Commit](https://www.conventionalcommits.org)**, scoped to the skill when it touches one. It becomes the changelog entry and sets the repo's next version:
 
-   | PR title | Effect on the skill's version |
+   | PR title | Effect on the repo version |
    | --- | --- |
    | `fix(<skill-name>): correct the branch-protection example` | patch |
    | `feat(<skill-name>): add a section on side panels` | minor |
-   | `feat(<skill-name>)!: rename the layers` or a `BREAKING CHANGE:` footer | major (minor while the skill is `0.x`) |
+   | `feat!: rename a skill` or a `BREAKING CHANGE:` footer | major |
    | `docs: ...`, `chore: ...`, `ci: ...` | no release |
-
-   Put a PR that touches several skills on separate PRs, one per skill, so each changelog stays accurate.
 
 ## The shared ARG base
 
@@ -30,7 +28,7 @@ Every skill carries the same **ARG base**: the coding principles, the branch →
 
 - Edit the base only in `shared/`, then run `node scripts/sync-base.mjs` and commit the updated copies in the same PR. CI fails when a copy drifts.
 - The base is stack-neutral. It refers to "verify", "the lib folder", "the arch-test tool", "the config module" and "the release type", and each skill's `## Stack profile` table fills them in.
-- A base change modifies every skill, so it releases every skill. Use a title like `feat(base): ...`, and list every affected skill in the PR body.
+- A base change modifies every skill. Use a title like `feat(base): ...`.
 
 ## Adding a new skill
 
@@ -46,10 +44,9 @@ Every skill carries the same **ARG base**: the coding principles, the branch →
    metadata:
      author: ARG Software
      homepage: https://arg.software
-     version: 0.1.0 # x-release-please-version
    ---
    ```
-   The `# x-release-please-version` comment lets release-please bump the version, so keep it.
+   Skills carry no version of their own; the repo version in `version.txt` covers them all.
 3. **Lay out the body** like the other skills:
    - a short intro saying where the guidance comes from
    - the empty markers `<!-- arg-base:start -->` and `<!-- arg-base:end -->` (then run `node scripts/sync-base.mjs` to fill them)
@@ -58,34 +55,25 @@ Every skill carries the same **ARG base**: the coding principles, the branch →
    - a references table, the stack checklist, and an About section
    - at most 500 lines. Put long examples and templates in `references/*.md` files linked directly from `SKILL.md` (one level deep).
 4. **Keep the body agent-neutral.** Use plain `git` / `gh` / `npm` commands and "ask the user before ..." instead of tool names from one specific agent. Then the skill behaves the same in Claude Code, Cursor, Codex, OpenCode, and Copilot.
-5. **Register it for releases** by adding the skill to both release-please files:
-   - `release-please-config.json` → `packages`:
-     ```json
-     "skills/<skill-name>": {
-       "component": "<skill-name>",
-       "extra-files": ["SKILL.md"]
-     }
-     ```
-   - `.release-please-manifest.json`: `"skills/<skill-name>": "0.0.0"`. The first `feat(<skill-name>)` merge then releases `0.1.0`.
-6. **Add a row** to the Skills table in `README.md` (link, one-line summary, install command).
-7. **Sync, validate and test:**
+5. **Add a row** to the Skills table in `README.md` (link, one-line summary, install command).
+6. **Sync, validate and test:**
    ```bash
    node scripts/sync-base.mjs
    node scripts/validate-skills.mjs
    npx skills add ./ --list
    ```
    Then install it into a scratch project for at least one agent and try a realistic request.
-8. Open the PR titled `feat(<skill-name>): add <skill-name> skill`.
+7. Open the PR titled `feat(<skill-name>): add <skill-name> skill`.
 
 ## Checks
 
 CI runs on every PR:
 
-- `validate` runs `scripts/validate-skills.mjs`. It checks every skill's frontmatter, that the folder name matches, the description length, the version annotation, the `## Stack profile` section, the 500-line limit, that every relative link resolves, the release-please entries, the README row, and that the ARG base copies match `shared/`.
+- `validate` runs `scripts/validate-skills.mjs`. It checks every skill's frontmatter, that the folder name matches, the description length, the `## Stack profile` section, the 500-line limit, that every relative link resolves, the README row, and that the ARG base copies match `shared/`.
 - `pr-title` checks the Conventional Commit PR title.
 
 ## Releases
 
-After each merge, release-please opens or updates a single Release PR that covers every changed skill, with each skill's new version and changelog. Merging it tags each skill as `<skill-name>-v<version>` and creates one GitHub release per skill. Release PRs are reviewed like any other PR.
+The repo has **one version** for all skills. After each merge, release-please opens or updates one Release PR with the next version (in `version.txt`) and the `CHANGELOG.md` entries. Merging it tags `v<version>` and creates one GitHub release. Release PRs are reviewed like any other PR.
 
-There is deliberately one Release PR, not one per skill (`"separate-pull-requests": false`): every Release PR edits `.release-please-manifest.json`, so separate PRs conflict with each other as soon as one is merged.
+Tags such as `<skill-name>-v1.0.0` come from before 2.0.0, when each skill had its own version; they are kept as history.

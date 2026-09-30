@@ -10,11 +10,7 @@ const NAME_PATTERN = /^[a-z0-9]+(?:-[a-z0-9]+)*$/;
 const MAX_NAME_LENGTH = 64;
 const MAX_DESCRIPTION_LENGTH = 1024;
 const MAX_SKILL_LINES = 500;
-const VERSION_LINE = /^\s+version:\s*\d+\.\d+\.\d+\s*#\s*x-release-please-version\s*$/m;
 
-const readJson = (path) => JSON.parse(readFileSync(path, "utf8"));
-const config = readJson("release-please-config.json");
-const manifest = readJson(".release-please-manifest.json");
 const readme = readFileSync("README.md", "utf8");
 
 /** Markdown files under `dir`, recursively. */
@@ -45,7 +41,7 @@ function frontmatter(content) {
     const pair = /^([a-z][\w-]*):\s*(.*)$/.exec(line);
     if (pair) fields[pair[1]] = pair[2].trim();
   }
-  return { raw: block[1], fields };
+  return { fields };
 }
 
 function problemsFor(folder) {
@@ -76,9 +72,6 @@ function problemsFor(folder) {
       problems.push(`${field} contains ": " or " #", which breaks YAML; rephrase it or quote the value`);
     }
   }
-  if (!VERSION_LINE.test(parsed.raw)) {
-    problems.push("metadata needs 'version: X.Y.Z # x-release-please-version'");
-  }
 
   const lineCount = content.split(/\r?\n/).length;
   if (lineCount > MAX_SKILL_LINES) {
@@ -86,15 +79,6 @@ function problemsFor(folder) {
   }
   if (!/^## Stack profile\s*$/m.test(content)) problems.push("SKILL.md needs a '## Stack profile' section (verify, lib folder, arch-test tool, config module, release type)");
 
-  const releasePackage = config.packages?.[packagePath];
-  if (!releasePackage) problems.push(`release-please-config.json has no packages["${packagePath}"] entry`);
-  else {
-    if (releasePackage.component !== folder) problems.push(`release-please-config.json component must be '${folder}'`);
-    if (!releasePackage["extra-files"]?.includes("SKILL.md")) {
-      problems.push(`release-please-config.json packages["${packagePath}"] must list "SKILL.md" in extra-files`);
-    }
-  }
-  if (!(packagePath in manifest)) problems.push(`.release-please-manifest.json has no "${packagePath}" entry`);
   if (!readme.includes(`(${packagePath}/SKILL.md)`)) problems.push(`README.md Skills table has no row linking ${packagePath}/SKILL.md`);
 
   return [...problems.map((problem) => `${skillFile}: ${problem}`), ...markdownFiles(packagePath).flatMap(brokenLinks)];
@@ -105,9 +89,6 @@ const folders = readdirSync(SKILLS_DIR, { withFileTypes: true })
   .map((entry) => entry.name);
 
 const problems = folders.flatMap(problemsFor);
-for (const path of Object.keys(config.packages ?? {})) {
-  if (!folders.includes(path.replace(`${SKILLS_DIR}/`, ""))) problems.push(`release-please-config.json lists '${path}', which does not exist`);
-}
 
 problems.push(...syncBase({ check: true }).problems);
 problems.push(...["README.md", "CONTRIBUTING.md"].flatMap(brokenLinks));
