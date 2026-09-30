@@ -16,6 +16,12 @@
       "extra-files": [
         "SKILL.md"
       ]
+    },
+    "skills/nx-monorepo-clean-architecture": {
+      "component": "nx-monorepo-clean-architecture",
+      "extra-files": [
+        "SKILL.md"
+      ]
     }
   }
 }
