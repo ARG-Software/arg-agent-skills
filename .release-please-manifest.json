@@ -1,4 +1,5 @@
 {
   "skills/browser-extension-clean-architecture": "1.1.0",
-  "skills/angular-ngrx-clean-architecture": "1.0.0"
+  "skills/angular-ngrx-clean-architecture": "1.0.0",
+  "skills/web-quality-audit": "0.0.0"
 }
