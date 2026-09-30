@@ -70,6 +70,12 @@ function problemsFor(folder) {
   else if (description.length > MAX_DESCRIPTION_LENGTH) {
     problems.push(`description is ${description.length} characters; the limit is ${MAX_DESCRIPTION_LENGTH}`);
   }
+  for (const [field, value] of [["name", name], ["description", description]]) {
+    // An unquoted YAML value cannot contain ": " or " #"; strict parsers (the skills CLI) reject or truncate it.
+    if (value && !/^["']/.test(value) && /: | #/.test(value)) {
+      problems.push(`${field} contains ": " or " #", which breaks YAML; rephrase it or quote the value`);
+    }
+  }
   if (!VERSION_LINE.test(parsed.raw)) {
     problems.push("metadata needs 'version: X.Y.Z # x-release-please-version'");
   }

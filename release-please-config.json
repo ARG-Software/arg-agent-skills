@@ -16,6 +16,42 @@
       "extra-files": [
         "SKILL.md"
       ]
+    },
+    "skills/nx-monorepo-clean-architecture": {
+      "component": "nx-monorepo-clean-architecture",
+      "extra-files": [
+        "SKILL.md"
+      ]
+    },
+    "skills/dotnet-clean-architecture": {
+      "component": "dotnet-clean-architecture",
+      "extra-files": [
+        "SKILL.md"
+      ]
+    },
+    "skills/react-native-clean-architecture": {
+      "component": "react-native-clean-architecture",
+      "extra-files": [
+        "SKILL.md"
+      ]
+    },
+    "skills/web-quality-audit": {
+      "component": "web-quality-audit",
+      "extra-files": [
+        "SKILL.md"
+      ]
+    },
+    "skills/arg-code-review": {
+      "component": "arg-code-review",
+      "extra-files": [
+        "SKILL.md"
+      ]
+    },
+    "skills/mcp-server-clean-architecture": {
+      "component": "mcp-server-clean-architecture",
+      "extra-files": [
+        "SKILL.md"
+      ]
     }
   }
 }
