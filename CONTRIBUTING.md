@@ -19,6 +19,19 @@ We follow the same rules our skills teach:
 
    Put a PR that touches several skills on separate PRs, one per skill, so each changelog stays accurate.
 
+## The shared ARG base
+
+Every skill carries the same **ARG base**: the clean-code principles, the branch → Conventional Commit PR → review workflow, the CI gate and ruleset, release-please, `.env` handling, the `lib` folder, architecture tests, and the checklists. It lives in one place:
+
+| Source | Copied to | How |
+| --- | --- | --- |
+| `shared/base-core.md` (the must-follow rules) | every `skills/<name>/SKILL.md`, between `<!-- arg-base:start -->` and `<!-- arg-base:end -->` | `node scripts/sync-base.mjs` |
+| `shared/arg-base.md` (procedures, templates, checklists) | every `skills/<name>/references/arg-base.md` | `node scripts/sync-base.mjs` |
+
+- Edit the base only in `shared/`, then run `node scripts/sync-base.mjs` and commit the updated copies in the same PR. CI fails when a copy drifts.
+- The base is stack-neutral. It refers to "verify", "the lib folder", "the arch-test tool", "the config module" and "the release type", and each skill's `## Stack profile` table fills them in.
+- A base change modifies every skill, so it releases every skill. Use a title like `feat(base): ...`, and list every affected skill in the PR body.
+
 ## Adding a new skill
 
 1. **Create the folder** `skills/<skill-name>/SKILL.md`.
@@ -37,8 +50,15 @@ We follow the same rules our skills teach:
    ---
    ```
    The `# x-release-please-version` comment lets release-please bump the version, so keep it.
-3. **Keep the body agent-neutral.** Use plain `git` / `gh` / `npm` commands and "ask the user before ..." instead of tool names from one specific agent. Then the skill behaves the same in Claude Code, Cursor, Codex, OpenCode, and Copilot.
-4. **Register it for releases** by adding the skill to both release-please files:
+3. **Lay out the body** like the other skills:
+   - a short intro saying where the guidance comes from
+   - the empty markers `<!-- arg-base:start -->` and `<!-- arg-base:end -->` (then run `node scripts/sync-base.mjs` to fill them)
+   - a `## Stack profile` table: verify, lib folder, arch-test tool, config module, release type
+   - the stack rules: layers, architecture tests, conventions, testing, CI, releases
+   - a references table, the stack checklist, and an About section
+   - at most 500 lines. Put long examples and templates in `references/*.md` files linked directly from `SKILL.md` (one level deep).
+4. **Keep the body agent-neutral.** Use plain `git` / `gh` / `npm` commands and "ask the user before ..." instead of tool names from one specific agent. Then the skill behaves the same in Claude Code, Cursor, Codex, OpenCode, and Copilot.
+5. **Register it for releases** by adding the skill to both release-please files:
    - `release-please-config.json` → `packages`:
      ```json
      "skills/<skill-name>": {
@@ -47,20 +67,21 @@ We follow the same rules our skills teach:
      }
      ```
    - `.release-please-manifest.json`: `"skills/<skill-name>": "0.0.0"`. The first `feat(<skill-name>)` merge then releases `0.1.0`.
-5. **Add a row** to the Skills table in `README.md` (link, one-line summary, install command).
-6. **Validate and test:**
+6. **Add a row** to the Skills table in `README.md` (link, one-line summary, install command).
+7. **Sync, validate and test:**
    ```bash
+   node scripts/sync-base.mjs
    node scripts/validate-skills.mjs
    npx skills add ./ --list
    ```
    Then install it into a scratch project for at least one agent and try a realistic request.
-7. Open the PR titled `feat(<skill-name>): add <skill-name> skill`.
+8. Open the PR titled `feat(<skill-name>): add <skill-name> skill`.
 
 ## Checks
 
 CI runs on every PR:
 
-- `validate` runs `scripts/validate-skills.mjs`. It checks every skill's frontmatter, that the folder name matches, the description length, the version annotation, the release-please entries, and the README row.
+- `validate` runs `scripts/validate-skills.mjs`. It checks every skill's frontmatter, that the folder name matches, the description length, the version annotation, the `## Stack profile` section, the 500-line limit, that every relative link resolves, the release-please entries, the README row, and that the ARG base copies match `shared/`.
 - `pr-title` checks the Conventional Commit PR title.
 
 ## Releases

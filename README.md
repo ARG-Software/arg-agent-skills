@@ -16,6 +16,18 @@ npx skills add ARG-Software/arg-agent-skills
 
 More skills are on the way. Watch the repo to hear about new ones.
 
+### The ARG base, in every skill
+
+Every skill includes the same base rules, so your agent works the same way whatever the stack:
+
+- **Clean architecture**: dependencies point inward, and every layer rule is an architecture test.
+- **A dependency-free `lib` folder** for reusable helpers, never copied between files.
+- **One branch per feature or fix**, and a PR with a Conventional Commit title reviewed by a human. The agent never merges.
+- **CI before the default branch**, plus a ruleset that requires it.
+- **SemVer releases with release-please**: fix → patch, feat → minor, breaking → major.
+- **Secrets out of git**: a tracked `.env.example` and an untracked `.env`.
+- **Tests at the owning boundary**, with docs and `AGENTS.md` updated in the same PR.
+
 ## Install
 
 The [`skills` CLI](https://github.com/vercel-labs/skills) finds the skills in this repo and installs them into the right folder for your agent.
