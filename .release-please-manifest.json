@@ -1,10 +1,10 @@
 {
-  "skills/browser-extension-clean-architecture": "1.1.0",
-  "skills/angular-ngrx-clean-architecture": "1.0.0",
-  "skills/nx-monorepo-clean-architecture": "1.0.0",
-  "skills/dotnet-clean-architecture": "1.0.0",
-  "skills/react-native-clean-architecture": "1.0.0",
-  "skills/web-quality-audit": "1.0.0",
+  "skills/arg-browser-extension": "1.1.0",
+  "skills/arg-angular": "1.0.0",
+  "skills/arg-nx-monorepo": "1.0.0",
+  "skills/arg-dotnet": "1.0.0",
+  "skills/arg-react-native": "1.0.0",
+  "skills/arg-web-audit": "1.0.0",
   "skills/arg-code-review": "1.0.0",
-  "skills/mcp-server-clean-architecture": "1.0.0"
+  "skills/arg-mcp-server": "1.0.0"
 }

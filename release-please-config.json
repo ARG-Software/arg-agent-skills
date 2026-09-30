@@ -5,38 +5,38 @@
   "bump-minor-pre-major": true,
   "separate-pull-requests": false,
   "packages": {
-    "skills/browser-extension-clean-architecture": {
-      "component": "browser-extension-clean-architecture",
+    "skills/arg-browser-extension": {
+      "component": "arg-browser-extension",
       "extra-files": [
         "SKILL.md"
       ]
     },
-    "skills/angular-ngrx-clean-architecture": {
-      "component": "angular-ngrx-clean-architecture",
+    "skills/arg-angular": {
+      "component": "arg-angular",
       "extra-files": [
         "SKILL.md"
       ]
     },
-    "skills/nx-monorepo-clean-architecture": {
-      "component": "nx-monorepo-clean-architecture",
+    "skills/arg-nx-monorepo": {
+      "component": "arg-nx-monorepo",
       "extra-files": [
         "SKILL.md"
       ]
     },
-    "skills/dotnet-clean-architecture": {
-      "component": "dotnet-clean-architecture",
+    "skills/arg-dotnet": {
+      "component": "arg-dotnet",
       "extra-files": [
         "SKILL.md"
       ]
     },
-    "skills/react-native-clean-architecture": {
-      "component": "react-native-clean-architecture",
+    "skills/arg-react-native": {
+      "component": "arg-react-native",
       "extra-files": [
         "SKILL.md"
       ]
     },
-    "skills/web-quality-audit": {
-      "component": "web-quality-audit",
+    "skills/arg-web-audit": {
+      "component": "arg-web-audit",
       "extra-files": [
         "SKILL.md"
       ]
@@ -47,8 +47,8 @@
         "SKILL.md"
       ]
     },
-    "skills/mcp-server-clean-architecture": {
-      "component": "mcp-server-clean-architecture",
+    "skills/arg-mcp-server": {
+      "component": "arg-mcp-server",
       "extra-files": [
         "SKILL.md"
       ]

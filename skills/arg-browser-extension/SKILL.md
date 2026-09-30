@@ -1,6 +1,6 @@
 ---
-name: browser-extension-clean-architecture
-description: Clean architecture and a disciplined git workflow for browser extensions (Manifest V3, Chrome/Firefox/Safari), including extensions that run AI on the device. Use when starting or scaffolding an extension project, adding a feature, fixing a bug, refactoring, adding a helper or utility, calling a browser API (tabs, storage, scripting, webRequest, messaging), reviewing architecture or layer boundaries, writing architecture tests, setting up CI, environment variables and secrets (.env), versioning, releases, changelogs, Conventional Commits, or preparing a branch and pull request. Enforces domain/application/infrastructure/presentation separation with architecture tests, keeps every browser API inside infrastructure adapters, a dependency-free src/lib folder for reusable helpers, feature/fix branches, reviewed PRs, a CI pipeline that runs the tests before anything reaches the default branch, untracked .env files, and automatic SemVer releases with release-please.
+name: arg-browser-extension
+description: How ARG builds scalable browser extensions (Manifest V3, Chrome/Firefox/Safari), including extensions that run AI on the device. Business rules stay apart from browser APIs, so it stays easy to change as it grows. Use when starting or scaffolding an extension project, adding a feature, fixing a bug, refactoring, adding a helper, calling a browser API (tabs, storage, scripting, webRequest, messaging), reviewing architecture or layer boundaries, writing architecture tests, setting up CI, environment variables and secrets (.env), versioning, releases, changelogs, Conventional Commits, or preparing a branch and pull request. Enforces domain/application/infrastructure/presentation separation with architecture tests, keeps every browser API inside infrastructure adapters, a dependency-free src/lib folder for reusable helpers, feature/fix branches, reviewed PRs, a CI pipeline that runs the tests before anything reaches the default branch, untracked .env files, and automatic SemVer releases with release-please.
 license: MIT
 metadata:
   author: ARG Software
@@ -8,9 +8,9 @@ metadata:
   version: 1.1.0 # x-release-please-version
 ---
 
-# Browser Extension Clean Architecture
+# Scalable browser extensions, the ARG way
 
-Guidance for building browser extensions that stay easy to change after hundreds of features. It is distilled from ARG Architect, a production MV3 extension for Chrome and Firefox that runs a multilingual AI model entirely on the device.
+Guidance for building scalable browser extensions that stay easy to change after hundreds of features. It is distilled from ARG Architect, a production MV3 extension for Chrome and Firefox that runs a multilingual AI model entirely on the device.
 
 <!-- arg-base:start -->
 ## ARG base: rules for every task

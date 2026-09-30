@@ -8,7 +8,7 @@
 
 ## Skill(s) affected
 
-<!-- e.g. browser-extension-clean-architecture. Keep one skill per PR so each changelog stays accurate. -->
+<!-- e.g. arg-browser-extension. Keep one skill per PR so each changelog stays accurate. -->
 
 ## How it was tested
 

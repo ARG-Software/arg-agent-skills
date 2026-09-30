@@ -21,7 +21,7 @@ We follow the same rules our skills teach:
 
 ## The shared ARG base
 
-Every skill carries the same **ARG base**: the clean-code principles, the branch → Conventional Commit PR → review workflow, the CI gate and ruleset, release-please, `.env` handling, the `lib` folder, architecture tests, and the checklists. It lives in one place:
+Every skill carries the same **ARG base**: the coding principles, the branch → Conventional Commit PR → review workflow, the CI gate and ruleset, release-please, `.env` handling, the `lib` folder, architecture tests, and the checklists. It lives in one place:
 
 | Source | Copied to | How |
 | --- | --- | --- |
@@ -34,7 +34,7 @@ Every skill carries the same **ARG base**: the clean-code principles, the branch
 
 ## Adding a new skill
 
-1. **Create the folder** `skills/<skill-name>/SKILL.md`.
+1. **Create the folder** `skills/<skill-name>/SKILL.md`. Skills are named `arg-<stack or task>` (for example `arg-angular`, `arg-code-review`), and build skills are titled "Scalable <stack>, the ARG way".
    - `<skill-name>` is lowercase letters, digits, and hyphens, and must equal the `name` field.
    - Supporting files (`references/`, `templates/`, `scripts/`) go inside the same folder and are linked from `SKILL.md` with relative paths.
 2. **Write the frontmatter** in this exact shape:

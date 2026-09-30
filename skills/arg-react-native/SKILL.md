@@ -1,6 +1,6 @@
 ---
-name: react-native-clean-architecture
-description: Clean architecture and performance practices for React Native and Expo apps. Use when scaffolding or extending a React Native app, adding a screen, use case, port, adapter, API client, storage, native module or device API (camera, location, notifications, biometrics), choosing state management (TanStack Query, Zustand, Jotai), fixing jank, dropped frames, slow lists, re-renders, slow startup (TTI), large bundles or app size, memory leaks, animations with Reanimated, writing Turbo Modules, writing unit, component, architecture or e2e tests (Jest, React Native Testing Library, Maestro, Detox), setting up CI, EAS or Fastlane builds, environment variables (.env), versioning with release-please, or preparing a branch and pull request. Enforces domain/application/infrastructure/presentation layers with architecture tests, device and network access only in infrastructure, measure-first performance work, a dependency-free src/lib, feature/fix branches, reviewed PRs, and CI before merge.
+name: arg-react-native
+description: How ARG builds scalable, fast React Native and Expo apps. Business rules stay apart from the device and UI, so the app stays easy to change as it grows. Use when scaffolding or extending a React Native app, adding a screen, use case, port, adapter, API client, storage, native module or device API, choosing state management (TanStack Query, Zustand, Jotai), fixing jank, dropped frames, slow lists, re-renders, slow startup (TTI), large bundles or app size, memory leaks, animations with Reanimated, writing Turbo Modules, writing unit, component, architecture or e2e tests (Jest, RNTL, Maestro, Detox), setting up CI, EAS or Fastlane builds, environment variables (.env), versioning with release-please, or preparing a branch and pull request. Enforces domain/application/infrastructure/presentation layers with architecture tests, device and network access only in infrastructure, measure-first performance work, a dependency-free src/lib, feature/fix branches, reviewed PRs, and CI before merge.
 license: MIT
 metadata:
   author: ARG Software
@@ -8,9 +8,9 @@ metadata:
   version: 1.0.0 # x-release-please-version
 ---
 
-# React Native Clean Architecture
+# Scalable React Native apps, the ARG way
 
-Guidance for React Native apps (bare or Expo) that keep business rules independent of the device, the network and the UI kit, and stay fast because every optimisation is measured. The architecture rules are ARG Software's own. The performance guidance is inspired by Callstack's MIT-licensed [`react-native-best-practices`](https://github.com/callstackincubator/agent-skills) skill (see [Credits](#credits)), reorganised and rewritten for this structure.
+Guidance for scalable React Native apps (bare or Expo) that keep business rules independent of the device, the network and the UI kit, and stay fast because every optimisation is measured. The architecture rules are ARG Software's own. The performance guidance is inspired by Callstack's MIT-licensed [`react-native-best-practices`](https://github.com/callstackincubator/agent-skills) skill (see [Credits](#credits)), reorganised and rewritten for this structure.
 
 <!-- arg-base:start -->
 ## ARG base: rules for every task

@@ -1,6 +1,6 @@
 ---
-name: mcp-server-clean-architecture
-description: Expose an application's existing capabilities to AI agents through a Model Context Protocol (MCP) server, without duplicating business logic. Use when asked to add MCP support to an API or back end, make an app usable from Claude, Cursor, Copilot, Codex or OpenCode, expose endpoints or use cases to AI agents, add, review or secure an MCP tool, resource or prompt, choose between stdio and Streamable HTTP, add OAuth to a remote MCP server, test an MCP server, write MCP client setup docs, or prepare a branch and pull request for any of these. Works for Node.js/TypeScript back ends, with NestJS as the worked example. Enforces MCP as a thin adapter where each tool calls one use case, authorization in the application layer shared with REST, OAuth resource-server auth for remote servers, typed tool errors, architecture checks, real MCP tests, feature/fix branches, reviewed PRs, and CI before merge.
+name: arg-mcp-server
+description: How ARG builds scalable MCP servers that expose an application's existing capabilities to AI agents through the Model Context Protocol, without duplicating business logic, so the app and its agent interface grow together. Use when asked to add MCP support to an API or back end, make an app usable from Claude, Cursor, Copilot, Codex or OpenCode, expose endpoints or use cases to AI agents, add, review or secure an MCP tool, resource or prompt, choose between stdio and Streamable HTTP, add OAuth to a remote MCP server, test an MCP server, write MCP client setup docs, or prepare a branch and pull request for any of these. Works for Node.js/TypeScript back ends, with NestJS as the worked example. Enforces MCP as a thin adapter where each tool calls one use case, authorization in the application layer shared with REST, OAuth resource-server auth for remote servers, typed tool errors, architecture checks, real MCP tests, feature/fix branches, reviewed PRs, and CI before merge.
 license: MIT
 metadata:
   author: ARG Software
@@ -8,7 +8,7 @@ metadata:
   version: 1.0.0 # x-release-please-version
 ---
 
-# MCP Server Clean Architecture
+# Scalable MCP servers, the ARG way
 
 Use this skill to let AI agents do what your application already does. An MCP server is another adapter next to your REST API: it translates agent requests into calls to the same use cases, with the same authorization and the same errors. The business rules stay where they are.
 
