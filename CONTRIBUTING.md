@@ -86,4 +86,6 @@ CI runs on every PR:
 
 ## Releases
 
-After each merge, release-please opens or updates one Release PR per changed skill, with the new version and changelog. Merging a Release PR tags `<skill-name>-v<version>` and creates the GitHub release. Release PRs are reviewed like any other PR.
+After each merge, release-please opens or updates a single Release PR that covers every changed skill, with each skill's new version and changelog. Merging it tags each skill as `<skill-name>-v<version>` and creates one GitHub release per skill. Release PRs are reviewed like any other PR.
+
+There is deliberately one Release PR, not one per skill (`"separate-pull-requests": false`): every Release PR edits `.release-please-manifest.json`, so separate PRs conflict with each other as soon as one is merged.

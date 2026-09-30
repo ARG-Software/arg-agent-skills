@@ -3,7 +3,7 @@
   "release-type": "simple",
   "include-component-in-tag": true,
   "bump-minor-pre-major": true,
-  "separate-pull-requests": true,
+  "separate-pull-requests": false,
   "packages": {
     "skills/browser-extension-clean-architecture": {
       "component": "browser-extension-clean-architecture",
