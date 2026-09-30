@@ -5,7 +5,7 @@ license: MIT
 metadata:
   author: ARG Software
   homepage: https://arg.software
-  version: 2.0.0 # x-release-please-version
+  version: 3.0.0 # x-release-please-version
 ---
 
 # Scalable React Native apps, the ARG way

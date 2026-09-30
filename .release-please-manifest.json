@@ -1,10 +1,10 @@
 {
   "skills/arg-browser-extension": "2.0.0",
-  "skills/arg-angular": "2.0.0",
-  "skills/arg-nx-monorepo": "2.0.0",
-  "skills/arg-dotnet": "2.0.0",
-  "skills/arg-react-native": "2.0.0",
-  "skills/arg-web-audit": "2.0.0",
-  "skills/arg-code-review": "2.0.0",
-  "skills/arg-mcp-server": "2.0.0"
+  "skills/arg-angular": "3.0.0",
+  "skills/arg-nx-monorepo": "3.0.0",
+  "skills/arg-dotnet": "3.0.0",
+  "skills/arg-react-native": "3.0.0",
+  "skills/arg-web-audit": "3.0.0",
+  "skills/arg-code-review": "3.0.0",
+  "skills/arg-mcp-server": "3.0.0"
 }
