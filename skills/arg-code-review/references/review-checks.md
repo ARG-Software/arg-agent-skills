@@ -59,7 +59,7 @@ Stack hints:
 - **Angular**: `HttpClient`, `localStorage`, `window` outside `infrastructure`; one feature importing another feature's internals.
 - **Nx**: a missing or wrong `tags` entry in a new `project.json`; `depConstraints` loosened (`*` → `*`).
 - **.NET**: `Microsoft.EntityFrameworkCore` or `Microsoft.AspNetCore` in `Domain`/`Application`; a new `ProjectReference` that points outward.
-- **NestJS MCP servers**: `@modelcontextprotocol/*`, `@nestjs/*` or `@prisma/*` imported in domain/application; business logic inside tool handlers.
+- **MCP servers**: `@modelcontextprotocol/*` imported outside the MCP adapter; framework, ORM or SDK imports in domain/application; the MCP adapter importing the ORM or queue; business logic or role checks inside tool handlers; `console.log` in a stdio server.
 
 False positives: type-only imports that the repo's rules explicitly allow, test files (they may import across layers to build fakes, unless the repo says otherwise), and the composition root.
 

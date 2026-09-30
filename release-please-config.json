@@ -46,6 +46,12 @@
       "extra-files": [
         "SKILL.md"
       ]
+    },
+    "skills/mcp-server-clean-architecture": {
+      "component": "mcp-server-clean-architecture",
+      "extra-files": [
+        "SKILL.md"
+      ]
     }
   }
 }
