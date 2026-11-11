@@ -1,5 +1,12 @@
 # Changelog
 
+## [2.2.0](https://github.com/ARG-Software/arg-agent-skills/compare/v2.1.0...v2.2.0) (2026-11-11)
+
+
+### Features
+
+* **arg-devops-setup:** add arg-devops-setup skill ([f48abfd](https://github.com/ARG-Software/arg-agent-skills/commit/f48abfdb79e4fc72200ed38d94f7014ae2441538))
+
 ## [2.1.0](https://github.com/ARG-Software/arg-agent-skills/compare/v2.0.0...v2.1.0) (2026-11-11)
 
 
