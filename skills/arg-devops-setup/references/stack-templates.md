@@ -30,7 +30,7 @@ The release-please skeleton in [arg-base.md](arg-base.md) section 2.5 starts a n
 ```yaml
 version: 2
 updates:
-  - package-ecosystem: npm            # nuget | uv | pip | gomod | cargo | docker
+  - package-ecosystem: npm            # nuget | uv | pip | gomod | cargo | docker | docker-compose
     directory: /
     schedule: { interval: weekly }
     groups:

@@ -1,6 +1,6 @@
 ---
 name: arg-devops-setup
-description: DevOps setup for any repository, the ARG way, so a new or existing project gets the delivery pipeline that keeps it scalable. Use when asked to set up or audit a repo's DevOps, CI, GitHub Actions, branch protection or rulesets, squash merges, PR templates, CODEOWNERS, Conventional Commit PR titles, release-please, semantic versioning and changelogs, Dependabot or Renovate, AGENTS.md or CLAUDE.md agent rules, .env and .env.example handling, a lib folder, or architecture tests; to make a repo production-ready; or to bring an existing project up to the ARG base. Detects the stack (Node/TypeScript, Nx, .NET, Python, Go, Rust), shows a gap table of what is present, partial or missing, adds the missing pieces on a chore/project-setup branch without overwriting existing CI or rules, asks before any ruleset, secret, push or PR, and opens one PR for review. Never merges.
+description: DevOps setup for any repository, new or existing, the ARG way. Use when asked to set up or audit a repo's DevOps, CI, GitHub Actions, rulesets, squash merges, PR templates, CODEOWNERS, Conventional Commit PR titles, release-please, changelogs, Dependabot, AGENTS.md or CLAUDE.md, .env handling, a lib folder, architecture tests, a Docker Compose local stack with a database, Prometheus and Grafana observability, a /metrics endpoint, or a Portainer container UI; to make a repo production-ready; or to bring a project up to the ARG base. Detects the stack (Node/TypeScript, Nx, .NET, Python, Go, Rust), shows a gap table of what is present, partial or missing, adds the missing pieces on a chore/project-setup branch without overwriting existing CI or rules, asks before any ruleset, secret, push or PR, and opens one PR for review. Never merges.
 license: MIT
 metadata:
   author: ARG Software
@@ -9,7 +9,7 @@ metadata:
 
 # DevOps setup for any repo, the ARG way
 
-A procedure that gives any repository, new or years old, the delivery pipeline every ARG project runs on: CI that gates the default branch, a ruleset that makes the gate real, Conventional Commit PRs, automatic versions and changelogs with release-please, one rulebook for every coding agent, safe `.env` handling, a `lib` folder, and architecture tests. It is the setup side of the ARG base: the base says what a project needs, this skill puts it there.
+A procedure that gives any repository, new or years old, the delivery pipeline every ARG project runs on: CI that gates the default branch, a ruleset that makes the gate real, Conventional Commit PRs, automatic versions and changelogs with release-please, one rulebook for every coding agent, safe `.env` handling, a `lib` folder, and architecture tests. Optionally it adds a local stack in Docker Compose: the database the app uses, Prometheus and Grafana watching the app's `/metrics`, and Portainer to see the running containers. It is the setup side of the ARG base: the base says what a project needs, this skill puts it there.
 
 Two rules come before everything else:
 
@@ -124,11 +124,12 @@ Each step below is one commit with the message shown:
 5. **Review scaffolding** (local): PR template, `CODEOWNERS`. Commit: `chore: add PR template and CODEOWNERS`.
 6. **Releases** (local): release-please config, manifest and workflow, seeded from the current version. Commit: `chore: add release-please`.
 7. **Architecture tests** (local), pointed at the real layer and helper folders. Commit: `test: add architecture tests`.
-8. **Agent rulebook** (local, last, so it only describes files that now exist): `AGENTS.md`, `CLAUDE.md` importing it, and pointers only for agents the repo already has files for. Commit: `docs: add AGENTS.md`.
-9. **Push and open the PR** (outward): ask first.
-10. **After the PR's checks have run once** (outward, each asked separately): the `RELEASE_PLEASE_TOKEN` secret, squash-only merges, the ruleset.
+8. **Local stack** (local, optional, each piece opt-in): a `compose.yaml` with the database, cache or broker the code uses, Prometheus and Grafana with a provisioned dashboard, Portainer, and the app's `/metrics` endpoint. Commits: `chore: add local stack with docker compose` and `feat: expose prometheus metrics` (the endpoint changes the app, so it is a `feat`). See [references/local-stack.md](references/local-stack.md).
+9. **Agent rulebook** (local, last, so it only describes files that now exist): `AGENTS.md`, `CLAUDE.md` importing it, and pointers only for agents the repo already has files for. Commit: `docs: add AGENTS.md`.
+10. **Push and open the PR** (outward): ask first.
+11. **After the PR's checks have run once** (outward, each asked separately): the `RELEASE_PLEASE_TOKEN` secret, squash-only merges, the ruleset.
 
-The user may pick a subset. Skip anything already present and correct. If the repo has no remote, stop after step 8 and list steps 9 and 10 as pending.
+The user may pick a subset. Skip anything already present and correct. If the repo has no remote, stop after step 9 and list steps 10 and 11 as pending.
 
 ### 4. Apply
 
@@ -142,6 +143,7 @@ Work through the approved steps, one commit each, with the messages from the pla
 - **Existing agent rules are merged, not replaced.** Move the content of `CLAUDE.md`, `.cursor/rules` or `copilot-instructions.md` into `AGENTS.md`, then make the others point to it (see [references/agents-md.md](references/agents-md.md)). Show the user the diff.
 - **Write `AGENTS.md` from the repo**, never from a generic template: the real commands, folders, layers, naming and domain rules you found.
 - **Architecture tests start green.** Encode the layering the code already follows. If the code violates a rule the user wants, list the current offenders as known exceptions (the template in [references/stack-templates.md](references/stack-templates.md) has the pattern, including a test that fails once an exception is fixed so the list shrinks), and record a follow-up in the PR body, or as an issue when there is a remote and the user agrees.
+- **The local stack is local.** Pin every image tag, bind every port to `127.0.0.1`, read credentials from `.env`, and keep optional services behind compose profiles. Portainer mounts the Docker socket, which is root-equivalent: say so when proposing it, and never add it to a compose file used on a shared or production host. Ask before the first `docker compose up` (it pulls images) and before installing a metrics library. The metrics library is imported only by infrastructure.
 - **A secret in git is reported at once.** Tell the user immediately, before continuing: which file, which variable names, which commits. Say the value must be **rotated** whether or not the PR is ever merged, because it stays in history. Then continue with the setup: untrack the file with `git rm --cached` in its own commit. Rewriting history (`git filter-repo`) is an outward, destructive step: mention it as optional and never do it yourself.
 
 Templates: the shared ones (CI workflow, ruleset, PR template, release-please, `.env`, `lib`, architecture-test helper) are in [references/arg-base.md](references/arg-base.md) sections 2 to 4. The per-stack parts are in [references/stack-templates.md](references/stack-templates.md).
@@ -149,7 +151,7 @@ Templates: the shared ones (CI workflow, ruleset, PR template, release-please, `
 ### 5. Verify
 
 1. Run the verify command and the new architecture tests locally. Both must pass.
-2. Validate the workflows: `actionlint` if available, else check the YAML parses and every referenced script exists.
+2. Validate the workflows: `actionlint` if available, else check the YAML parses and every referenced script exists. For a local stack, run `docker compose config --quiet`, and with the user's approval start it and check the steps in [references/local-stack.md](references/local-stack.md#verify).
 3. Check `git status`, `git diff --cached` and `git ls-files` for `.env` files or keys, without printing their values.
 4. Ask before pushing. Then open one PR titled `chore: set up the ARG base` with a body that has the gap table (before and after), what was skipped and why, and the outward steps still waiting for the user.
 5. **Never merge it.** Give the user the link.
@@ -195,6 +197,7 @@ Use the platform's CLI (`glab`, `az repos`) only with the user's approval, the s
 | [references/arg-base.md](references/arg-base.md) | you need the shared templates: CI workflow, ruleset, PR template, release-please, `.env`, `lib`, architecture-test helper |
 | [references/detection.md](references/detection.md) | detecting the stack and commands, and judging each piece of the gap table |
 | [references/stack-templates.md](references/stack-templates.md) | filling the CI verify steps, release type, runtime pin, update bot and architecture tests for the detected stack |
+| [references/local-stack.md](references/local-stack.md) | adding Docker Compose for the database, Prometheus and Grafana, Portainer, and the app's `/metrics` endpoint |
 | [references/agents-md.md](references/agents-md.md) | writing `AGENTS.md`, wiring `CLAUDE.md`, Cursor, Copilot and Codex to it, and merging existing agent rules |
 
 ## Setup checklist
@@ -204,6 +207,7 @@ Use the platform's CLI (`glab`, `az repos`) only with the user's approval, the s
 - [ ] Plan approved; work on `chore/project-setup`, one Conventional Commit per piece.
 - [ ] Nothing existing overwritten; agent rules merged into `AGENTS.md`.
 - [ ] Verify and architecture tests pass locally; workflows validated; no secrets staged.
+- [ ] Local stack (if chosen): images pinned, ports on `127.0.0.1`, credentials in `.env`, optional services in profiles, Portainer's socket risk explained, `/metrics` only behind infrastructure, `docker compose config` passes.
 - [ ] PR opened only after approval, with before/after gap table; not merged.
 - [ ] Token, merge settings and ruleset applied only after approval and after checks ran once.
 
