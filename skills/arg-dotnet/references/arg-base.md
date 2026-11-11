@@ -31,9 +31,9 @@ Sections:
 1. Detect the default branch:
    ```bash
    gh repo view --json defaultBranchRef -q .defaultBranchRef.name 2>/dev/null \
-     || git symbolic-ref --short refs/remotes/origin/HEAD 2>/dev/null | sed 's#^origin/##' \
-     || echo main
+     || git symbolic-ref --short refs/remotes/origin/HEAD 2>/dev/null | sed 's#^origin/##'
    ```
+   If both print nothing (no remote, or `gh` not authenticated), use the branch the CI workflow targets (`on.push.branches`), else the only local branch, else ask the user. Never fall back to `main`, and never use `init.defaultBranch`, which is a local preference, not the repo's branch.
 2. Check the current branch with `git branch --show-current`.
 3. If you are on the default branch, or on a branch for different work, **advise a new branch and ask before creating it**:
 
@@ -316,10 +316,10 @@ Every rule in the skill's layer table is an automated check that runs in CI.
 - **Structural rules** check naming and placement: repositories implement their interfaces and live in infrastructure, and interfaces for ports are never declared in infrastructure.
 - **When you add a layer, alias, project or package**, extend the rules in the same PR.
 
-For JavaScript and TypeScript projects without a boundary tool, this dependency-free helper works with Jest, Vitest and `node:test`. Adjust `LAYERS` and `SOURCE_ROOT` to the project:
+For JavaScript and TypeScript projects without a boundary tool, this dependency-free helper works with any test runner. Adjust `LAYERS` and `SOURCE_ROOT` to the folders that exist, using the project's own name for the helper folder (`utils`, `common`) in place of `lib`. Keep the helper **outside** the test folders, because runners such as `node --test` treat every `.js` file under `test/` as a test. Files directly under `SOURCE_ROOT` (the composition root) are not checked.
 
 ```js
-// test/architecture/layers.js
+// tools/architecture/layers.js
 import { existsSync, readdirSync, readFileSync, statSync } from "node:fs";
 import { join } from "node:path";
 
@@ -388,9 +388,11 @@ export function usagesOutside(allowedLayers, pattern) {
 }
 ```
 
+The test below uses Jest or Vitest globals. With ES modules (`"type": "module"`, or Node without a bundler), keep the `.js` extension in the import. For `node:test`, use `import { test } from "node:test"` and `import assert from "node:assert/strict"`, and replace `expect(x).toEqual([])` with `assert.deepEqual(x, [])`.
+
 ```js
 // test/architecture/layers.test.js
-import { EXTERNAL, OUTSIDE, usagesOutside, violations } from "./layers";
+import { EXTERNAL, OUTSIDE, usagesOutside, violations } from "../../tools/architecture/layers.js";
 
 describe("architecture: dependencies point inward", () => {
   test("domain must not import any other layer", () => {

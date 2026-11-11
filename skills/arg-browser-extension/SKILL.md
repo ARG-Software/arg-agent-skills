@@ -138,7 +138,7 @@ Use the base import-scanning helper with `LAYERS` extended to include `services`
 ```js
 // test/architecture/extension.test.js
 import { readFileSync } from "node:fs";
-import { EXTERNAL, OUTSIDE, importSpecifiers, usagesOutside, violations } from "./layers";
+import { EXTERNAL, OUTSIDE, importSpecifiers, usagesOutside, violations } from "../../tools/architecture/layers.js";
 
 const BROWSER_API = /\b(chrome|browser)\s*\.\s*[a-zA-Z]+/;
 

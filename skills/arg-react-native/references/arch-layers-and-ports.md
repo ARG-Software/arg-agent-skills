@@ -272,12 +272,12 @@ export function NearbyStoresScreen() {
 
 ## Architecture tests
 
-Start from the base helper (`test/architecture/layers.js` in [arg-base.md](arg-base.md)) with `LAYERS = ["domain", "application", "infrastructure", "presentation", "bootstrap", "lib"]` (add `"app"` for Expo Router). React Native needs package rules on top of the layer rules, because presentation may import `react-native` but not device packages:
+Start from the base helper (`tools/architecture/layers.js` in [arg-base.md](arg-base.md)) with `LAYERS = ["domain", "application", "infrastructure", "presentation", "bootstrap", "lib"]` (add `"app"` for Expo Router). React Native needs package rules on top of the layer rules, because presentation may import `react-native` but not device packages:
 
 ```js
 // test/architecture/packages.js
 import { readFileSync } from "node:fs";
-import { filesUnder, importSpecifiers } from "./layers.js";
+import { filesUnder, importSpecifiers } from "../../tools/architecture/layers.js";
 
 /** `file -> import` pairs in `src/<layer>` whose package specifier matches `pattern`. */
 export function packageImports(layer, pattern) {
@@ -299,7 +299,7 @@ export const REACT_NATIVE = /^(react-native(-[a-z-]+)?|@react-native[a-z-]*|expo
 // test/architecture/layers.test.js  (node --test)
 import assert from "node:assert/strict";
 import { test } from "node:test";
-import { EXTERNAL, OUTSIDE, usagesOutside, violations } from "./layers.js";
+import { EXTERNAL, OUTSIDE, usagesOutside, violations } from "../../tools/architecture/layers.js";
 import { OUTSIDE_WORLD, REACT_NATIVE, packageImports } from "./packages.js";
 
 test("domain imports only lib", () => {
