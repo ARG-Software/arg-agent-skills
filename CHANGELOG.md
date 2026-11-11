@@ -1,5 +1,12 @@
 # Changelog
 
+## [2.1.0](https://github.com/ARG-Software/arg-agent-skills/compare/v2.0.0...v2.1.0) (2026-11-11)
+
+
+### Features
+
+* **arg-security-audit:** add arg-security-audit skill ([#29](https://github.com/ARG-Software/arg-agent-skills/issues/29)) ([efc5f30](https://github.com/ARG-Software/arg-agent-skills/commit/efc5f305eec305c6303e6ca22170ccf5498b0f1f))
+
 ## 2.0.0 (2026-09-30)
 
 The whole repo now has one version. Before 2.0.0 each skill was versioned on its own; that history is in the `<skill>-v<version>` tags and GitHub releases.
